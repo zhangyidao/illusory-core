@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.lzmcro</groupId>
     <artifactId>illusory-core</artifactId>
-    <version>0.0.1-RELEASE</version>
+    <version>0.0.2</version>
     <name>illusory-core</name>
     <description>illusory核心工具</description>
 
@@ -99,6 +99,31 @@
                     </execution>
                 </executions>
             </plugin>
+            <!--配置生成Javadoc包-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <configuration>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                    <aggregate>true</aggregate>
+                    <charset>${project.build.sourceEncoding}</charset>
+                    <docencoding>UTF-8</docencoding>
+                    <detectJavaApiLink>false</detectJavaApiLink>
+                    <!-- 忽略自定义标签的错误 -->
+                    <additionalJOptions>
+                        <additionalJOption>-Xdoclint:none</additionalJOption>
+                    </additionalJOptions>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>${packaging}</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
         </plugins>
     </build>
     <distributionManagement>
